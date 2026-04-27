@@ -36,7 +36,7 @@ jobs:
             -v ${{ github.workspace }}/fonts:/in \
             -v ${{ github.workspace }}/patched:/out \
             -e PN=4 \
-            nerdfonts/patcher --complete --mono --makegroups 6 --no-progressbars
+            nerdfonts/patcher --complete --makegroups 6 --no-progressbars
 
       - name: Package patched fonts
         run: |
