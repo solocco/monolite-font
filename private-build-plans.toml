@@ -28,44 +28,85 @@ digit-form = "lining"
 r = "corner-hooked-serifed"
 
 ###################################################################################################
-# Configure ligations - ✅ FIXED: arrow groups renamed to valid names
+# Configure ligations - ✅ FIXED: Only valid group names
 [buildPlans.Monolite.ligations]
 inherits = "default-calt"
 disables = []
 enables = [
+    # === OPERATOR CENTERING ===
     "center-ops",
-    # Arrow ligatures - menggunakan nama grup yang valid:
-    "arrow-l",           # <-, <=, <==, etc.
-    "arrow-r",           # ->, =>, ==>, etc.
-    "arrow-lr",          # <->, <=>, etc.
+    "center-op-trigger-plus-minus-l",
+    "center-op-trigger-plus-minus-r",
+    "center-op-trigger-equal-l",
+    "center-op-trigger-equal-r",
+    "center-op-trigger-bar-l",
+    "center-op-trigger-bar-r",
+    "center-op-trigger-angle-inside",
+    "center-op-trigger-angle-outside",
+    "center-op-influence-dot",
+    "center-op-influence-colon",
+
+    # === ARROWS (valid names) ===
+    "arrow-l",           # <-, <=, <==, dll
+    "arrow-r",           # ->, =>, ==>, dll
+    "arrow-lr",          # <->, <=>, dll
     "arrow-equal",       # panah dengan rod =
     "arrow-hyphen",      # panah dengan rod -
-    "trig",
-    "eqeqeq",
-    "eqeq",
-    "ineq",
-    "exeqeq",
-    "exeq",
-    "brst",
-    "plusplus",
-    "kern-dotty",
-    "kern-bars",
-    "logic",
-    "llgg",
-    "llggeq",
-    "html-comment"
+    "arrow-wave",        # panah dengan rod ~
+
+    # === EQUALITY / INEQUALITY ===
+    "eqeqeq",            # === dengan triple lines
+    "eqeq",              # == dan ===
+    "lteq",              # <= sebagai ≤
+    "gteq",              # >= sebagai ≥
+    "exeq",              # != dan !==
+    "tildeeq",           # ~= sebagai ≠
+    "slasheq",           # /= dan =/=
+
+    # === TRIANGLES / BRACKETS ===
+    "trig",              # <|, |>, <||, dll
+    "llgg",              # <<, >>, <<<, >>>
+    "llggeq",            # <<=, >>= sebagai shift
+
+    # === COMMENT SYMBOLS ===
+    "brst",              # (* dan *)
+    "html-comment",      # <!-- dan -->
+
+    # === KERNING / SPACING ===
+    "kern-dotty",        # ::, :::, ...
+    "kern-bars",         # ||, |||, //
+
+    # === LOGIC / MISC ===
+    "logic",             # /\, \/, |-, -|
+
+    # === CONNECTION (repeated chars) ===
+    "plusplus",          # ++, +++
+    "minus-minus",       # --, ---
+    "tilde-tilde",       # ~~, ~~~
+    "underscore-underscore",  # __, ___
+    "hash-hash"          # ##, ###
 ]
 
 ###################################################################################################
-# Override default building weights
-# Uncomment & customize if needed:
-# [buildPlans.Monolite.weights.Regular]
-# shape = 400
-# menu  = 400
-# css   = 400
 
-###################################################################################################
-# Override default building slope sets
+[buildPlans.CidMono.weights.Regular]
+shape = 415
+menu = 400
+css = 400
+[buildPlans.CidMono.weights.Bold]
+shape = 700
+menu = 700
+css = 700
+[buildPlans.CidMono.weights.Medium]
+shape = 510
+menu = 500
+css = 500
+[buildPlans.CidMono.widths.Normal]
+shape = 604
+menu = 5
+css = "normal"
+
+# Slopes
 [buildPlans.Monolite.slopes.Upright]
 angle = 0
 shape = "upright"
@@ -77,37 +118,3 @@ angle = 9.4
 shape = "italic"
 menu  = "italic"
 css   = "italic"
-
-###################################################################################################
-# Override default building widths
-# Uncomment & customize if needed:
-# [buildPlans.Monolite.widths.Normal]
-# shape = 500
-# menu  = 5
-# css   = "normal"
-
-###################################################################################################
-# Character Exclusion
-# Uncomment & customize if needed:
-# [buildPlans.Monolite.exclude-chars]
-# ranges = [[10003, 10008]]
-
-###################################################################################################
-# Compatibility Ligatures
-# Uncomment & customize if needed:
-# [[buildPlans.Monolite.compatibility-ligatures]]
-# unicode = 57600
-# featureTag = 'calt'
-# sequence = '<*>'
-
-###################################################################################################
-# Metric overrides
-# Uncomment & customize if needed:
-# [buildPlans.Monolite.metricOverride]
-# leading = 1250
-# winMetricAscenderPad = 0
-# winMetricDescenderPad = 0
-# powerlineScaleY = 1
-# powerlineScaleX = 1
-# powerlineShiftY = 0
-# powerlineShiftX = 0
