@@ -69,7 +69,7 @@ shape = 500
 menu = 500
 css = 500
 [buildPlans.Monolite.widths.Normal]
-shape = 600
+shape = 500
 menu = 5
 css = "normal"
 
