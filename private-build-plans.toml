@@ -89,19 +89,19 @@ enables = [
 
 ###################################################################################################
 
-[buildPlans.CidMono.weights.Regular]
+[buildPlans.Monolite.weights.Regular]
 shape = 415
 menu = 400
 css = 400
-[buildPlans.CidMono.weights.Bold]
+[buildPlans.Monolite.weights.Bold]
 shape = 700
 menu = 700
 css = 700
-[buildPlans.CidMono.weights.Medium]
+[buildPlans.Monolite.weights.Medium]
 shape = 510
 menu = 500
 css = 500
-[buildPlans.CidMono.widths.Normal]
+[buildPlans.Monolite.widths.Normal]
 shape = 604
 menu = 5
 css = "normal"
