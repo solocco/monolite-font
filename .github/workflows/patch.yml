@@ -1,0 +1,61 @@
+name: Patch with Nerd Fonts
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Release tag to patch"
+        required: true
+  workflow_call:
+    inputs:
+      tag:
+        required: true
+        type: string
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Download release artifact
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release download "${{ inputs.tag }}" \
+            --repo ${{ github.repository }} \
+            --pattern "Monolite-TTF.zip"
+
+      - name: Extract fonts
+        run: |
+          mkdir fonts patched
+          unzip Monolite-TTF.zip -d fonts
+
+      - name: Patch with Nerd Fonts
+        run: |
+          docker run --rm \
+            -v ${{ github.workspace }}/fonts:/in \
+            -v ${{ github.workspace }}/patched:/out \
+            -e PN=4 \
+            nerdfonts/patcher --complete --mono --makegroups 6 --no-progressbars
+
+      - name: Package patched fonts
+        run: |
+          cd patched
+          zip -r "$GITHUB_WORKSPACE/MonoliteNerdFont-TTF.zip" .
+          tar cJf "$GITHUB_WORKSPACE/MonoliteNerdFont-TTF.tar.xz" .
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: MonoliteNerdFont-TTF-${{ inputs.tag }}
+          path: |
+            MonoliteNerdFont-TTF.zip
+            MonoliteNerdFont-TTF.tar.xz
+
+      - name: Upload to release
+        if: github.ref == 'refs/heads/main'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release upload "${{ inputs.tag }}" \
+            MonoliteNerdFont-TTF.zip MonoliteNerdFont-TTF.tar.xz \
+            --repo ${{ github.repository }} --clobber
