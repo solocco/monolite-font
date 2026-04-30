@@ -23,12 +23,12 @@ jobs:
         run: |
           gh release download "${{ inputs.tag }}" \
             --repo ${{ github.repository }} \
-            --pattern "Monolite-TTF.zip"
+            --pattern "Mayulite-TTF.zip"
 
       - name: Extract fonts
         run: |
           mkdir fonts patched
-          unzip Monolite-TTF.zip -d fonts
+          unzip Mayulite-TTF.zip -d fonts
 
       - name: Patch with Nerd Fonts
         run: |
@@ -41,15 +41,15 @@ jobs:
       - name: Package patched fonts
         run: |
           cd patched
-          zip -r "$GITHUB_WORKSPACE/MonoliteNerdFont-TTF.zip" .
-          tar cJf "$GITHUB_WORKSPACE/MonoliteNerdFont-TTF.tar.xz" .
+          zip -r "$GITHUB_WORKSPACE/MayuliteNerdFont-TTF.zip" .
+          tar cJf "$GITHUB_WORKSPACE/MayuliteNerdFont-TTF.tar.xz" .
 
       - uses: actions/upload-artifact@v4
         with:
-          name: MonoliteNerdFont-TTF-${{ inputs.tag }}
+          name: MayuliteNerdFont-TTF-${{ inputs.tag }}
           path: |
-            MonoliteNerdFont-TTF.zip
-            MonoliteNerdFont-TTF.tar.xz
+            MayuliteNerdFont-TTF.zip
+            MayuliteNerdFont-TTF.tar.xz
 
       - name: Upload to release
         if: github.ref == 'refs/heads/main'
@@ -57,5 +57,5 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           gh release upload "${{ inputs.tag }}" \
-            MonoliteNerdFont-TTF.zip MonoliteNerdFont-TTF.tar.xz \
+            MayuliteNerdFont-TTF.zip MayuliteNerdFont-TTF.tar.xz \
             --repo ${{ github.repository }} --clobber

@@ -1,4 +1,4 @@
-# Monolite Font
+# Mayulite Font
 
 ## Screenshots
 

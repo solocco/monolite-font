@@ -1,4 +1,4 @@
-name: Build Monolite
+name: Build Mayulite
 on:
   schedule:
     # Monday and Wednesday at 12:00 UTC
@@ -77,20 +77,20 @@ jobs:
 
       - name: Build fonts
         working-directory: iosevka
-        run: npm run build -- ttf::Monolite
+        run: npm run build -- ttf::Mayulite
 
       - name: Package fonts
         run: |
-          cd iosevka/dist/Monolite/TTF
-          zip -r "$GITHUB_WORKSPACE/Monolite-TTF.zip" .
-          tar cJf "$GITHUB_WORKSPACE/Monolite-TTF.tar.xz" .
+          cd iosevka/dist/Mayulite/TTF
+          zip -r "$GITHUB_WORKSPACE/Mayulite-TTF.zip" .
+          tar cJf "$GITHUB_WORKSPACE/Mayulite-TTF.tar.xz" .
 
       - uses: actions/upload-artifact@v4
         with:
-          name: Monolite-TTF-${{ needs.check.outputs.tag }}
+          name: Mayulite-TTF-${{ needs.check.outputs.tag }}
           path: |
-            Monolite-TTF.zip
-            Monolite-TTF.tar.xz
+            Mayulite-TTF.zip
+            Mayulite-TTF.tar.xz
 
       - name: Create release
         if: github.ref == 'refs/heads/main'
@@ -99,8 +99,8 @@ jobs:
         run: |
           TAG="${{ needs.check.outputs.tag }}"
           SHA=$(git -C iosevka rev-parse HEAD)
-          gh release create "$TAG" Monolite-TTF.zip Monolite-TTF.tar.xz \
-            --title "Monolite ($TAG)" \
+          gh release create "$TAG" Mayulite-TTF.zip Mayulite-TTF.tar.xz \
+            --title "Mayulite ($TAG)" \
             --notes "Built from [Iosevka $TAG](https://github.com/be5invis/Iosevka/releases/tag/$TAG) (commit \`${SHA}\`)"
 
   patch:

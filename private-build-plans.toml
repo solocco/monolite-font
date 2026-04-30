@@ -1,14 +1,14 @@
-[buildPlans.Monolite]
-family = "Monolite"
+[buildPlans.Mayulite]
+family = "Mayulite"
 spacing = "normal"
 serifs = "sans"
 webfontFormats = ["WOFF2"]
 
 ###################################################################################################
-[buildPlans.Monolite.variants]
+[buildPlans.Mayulite.variants]
 inherits = "ss17"
 
-[buildPlans.Monolite.variants.design]
+[buildPlans.Mayulite.variants.design]
 r = "serifed"
 zero = "reverse-slashed"
 one = "base-long-top-serif"
@@ -23,11 +23,11 @@ underscore = "high"
 punctuation-dot = "round"
 digit-form = "lining"
 
-[buildPlans.Monolite.variants.italic]
+[buildPlans.Mayulite.variants.italic]
 r = "corner-hooked-serifed"
 
 ###################################################################################################
-[buildPlans.Monolite.ligations]
+[buildPlans.Mayulite.ligations]
 inherits = "default-calt"
 disables = []
 enables  = [
@@ -56,31 +56,31 @@ enables  = [
 ]
 
 ###################################################################################################
-[buildPlans.Monolite.weights.Regular]
+[buildPlans.Mayulite.weights.Regular]
 shape = 400
 menu = 400
 css = 400
-[buildPlans.Monolite.weights.Bold]
+[buildPlans.Mayulite.weights.Bold]
 shape = 700
 menu = 700
 css = 700
-[buildPlans.Monolite.weights.Medium]
+[buildPlans.Mayulite.weights.Medium]
 shape = 500
 menu = 500
 css = 500
-[buildPlans.Monolite.widths.Normal]
+[buildPlans.Mayulite.widths.Normal]
 shape = 500
 menu = 5
 css = "normal"
 
 ###################################################################################################
-[buildPlans.Monolite.slopes.Upright]
+[buildPlans.Mayulite.slopes.Upright]
 angle = 0
 shape = "upright"
 menu  = "upright"
 css   = "normal"
 
-[buildPlans.Monolite.slopes.Italic]
+[buildPlans.Mayulite.slopes.Italic]
 angle = 9.4
 shape = "italic"
 menu  = "italic"
